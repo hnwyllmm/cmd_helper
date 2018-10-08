@@ -45,13 +45,13 @@ protected:
 					if (opt && 0 == strcasecmp(opt, p + 2))
 					{
 						found = true ;
+						m_argv_none[i] = true ;
 						if (i + 1 < m_argc)
 						{
 							pval = m_argv[i+1] ;
 							
 							if (cmd_helper::parameter == type)
 							{
-								m_argv_none[i]   = true ;
 								m_argv_none[i+1] = true ;
 							}
 						}
@@ -61,6 +61,7 @@ protected:
 				else if (abbr && abbr[0] == p[1])
 				{
 					found = true ;
+					m_argv_none[i] = true ;
 					if (*(p+2))
 					{
 						if ('=' == *(p+2))	// short: -s=`value'
@@ -74,7 +75,6 @@ protected:
 						
 						if (cmd_helper::parameter == type)
 						{
-							m_argv_none[i]   = true ;
 							m_argv_none[i+1] = true ;
 						}
 					}
